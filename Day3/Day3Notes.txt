@@ -1,0 +1,95 @@
+UML Diagrams
+
+
+-   If 2 classes A and B are connected by a solid line with no arrorheads, what does it indicate?
+
+
+Inheritance:
+
+- Notation for Inheritance is arrow from derived with triangle head, the point of the triangle points towards to the base class.
+- triangle head arrow is only used in Inheritance.
+- 
+                                         BANK ACCOUNT                                                
+                                             ▲                                                
+                                             ┃                                                
+                                             ┃                                                
+                                             ┃                                 
+                                             ┃                                 
+                                             ┃                                 
+                             ________________┃________________                                 
+                            ┃                                 ┃            
+                            ┃                                 ┃                     
+                            ┃                                 ┃            
+                            ┃                                 ┃            
+                            ┃                                 ┃            
+                     _______┃_____________          __________┃______________                          
+                    ┃                     ┃        ┃                         ┃
+                    ┃Savings Acc.(Derived)┃        ┃ Current Account(Derived)┃          
+                    ┃_____________________┃        ┃_________________________┃             
+                                                        
+                        (Inheritance)                                                
+
+
+- Association:
+    When you model a system, certain objects will be related to each other, and these relationships themselves need to be modeled for clarity. 
+    There are five types of associations. 
+    bi-directional and uni-directional associations
+    An association is a linkage between two classes. 
+    Associations are always assumed to be bi-directional; 
+    this means that both classes are aware of each other and their relationship, unless you qualify the association as some other type. 
+    Going back to our Flight example, Figure 6 shows a standard kind of association between the Flight class and the Plane class.
+    ______________________________                      _____________________________
+    ┃___________FLIGHT___________┃                     ┃____________PLANE____________┃
+    ┃                            ┃                     ┃                             ┃   
+    ┃                            ┃  Bi-Di Association  ┃                             ┃  
+    ┃                            ┃---------------------┃                             ┃          
+    ┃                            ┃                     ┃                             ┃  
+    ┃                            ┃                     ┃                             ┃
+    ┃____________________________┃                     ┃_____________________________┃               
+
+
+- Packages
+
+    UML provides an organizing element called a package. Packages enable modelers to organize the model's classifiers into namespaces, which is sort of like folders in a filing system. Dividing a system into multiple packages makes the system easier to understand, especially if each package represents a specific part of the system. (Note: Packages are great for organizing your model's classes, but it's important to remember that your class diagrams are supposed to easily communicate information about the system being modeled. In cases where your packages have lots of classes, it is better to use multiple topic-specific class diagrams instead of just producing one large class diagram.)
+
+    There are two ways of drawing packages on diagrams. There is no rule for determining which notation to use, except to use your personal judgement regarding which is easiest to read for the class diagram you are drawing. Both ways begin with a large rectangle with a smaller rectangle (tab) above its upper-left corner, as seen in Figure 8. But the modeler must decide how the package's membership is to be shown, as follows:
+
+        If the modeler decides to show the package's members within the large rectangle, then all those members need to be placed within the rectangle. (Note: It's important to understand that when I say "all those members," I mean only the classes that the current diagram is going to show. A diagram showing a package with contents does not need to show all its contents; it can show a subset of the contained elements according to some criterion, which is not necessarily all the package's classifiers.) Also the package's name needs to be placed in the package's smaller rectangle (as shown in Figure 8).
+
+        If the modeler decides to show the package's members outside the large rectangle then all the members that will be shown on the diagram need to be placed outside the rectangle. To show what classifiers belong to the package, a line is drawn from each classifier to a circle that has a plus sign inside the circle attached to the package (Figure 9).
+
+ _____________________________________________________________________________________
+┃_________PACKAGE__________┃                                                          ┃
+┃                                                                                     ┃
+┃                                                                                     ┃
+┃                               BANK ACCOUNT                                          ┃
+┃                                      ▲                                              ┃
+┃                                      ┃                                              ┃
+┃                                      ┃                                              ┃
+┃                                      ┃                                              ┃
+┃                                      ┃                                              ┃
+┃                                      ┃                                              ┃
+┃                      ________________┃________________                              ┃
+┃                     ┃                                 ┃                             ┃
+┃                     ┃                                 ┃                             ┃
+┃                     ┃                                 ┃                             ┃
+┃                     ┃                                 ┃                             ┃
+┃                     ┃                                 ┃                             ┃
+┃              _______┃_____________          __________┃______________               ┃
+┃             ┃                     ┃        ┃                         ┃              ┃
+┃             ┃Savings Acc.(Derived)┃        ┃ Current Account(Derived)┃              ┃
+┃             ┃_____________________┃        ┃_________________________┃              ┃
+┃                                                                                     ┃
+┃                 (Inheritance)                                                       ┃
+┃                                                                                     ┃
+┃_____________________________________________________________________________________┃
+
+
+
+
+
+
+
+
+
+

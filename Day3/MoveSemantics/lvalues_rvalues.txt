@@ -1,0 +1,82 @@
+
+int n1 = 40;
+
+4 token
+
+int  // dataype
+
+n1 //identifier name given by the programmers
+
+= assignment operator
+
+10 //rvalue (integer literal)
+
+ /* 
+        any form of data that is not preserved in a fixed location in memory will disappear
+        at the end of the expression (full expression) where it originated
+
+     */
+
+10;//10: temporary (rvalue);
+
+
+
+
+void Magic(std::vector<int>val)
+Main(){
+   Magic(...........);
+
+}
+
+Scenario 1: Design the function to accept lvalue and rvalue both. Allow copy of lvalue and assignment of rvalue
+example:
+   Magic(std::vector<int>v1);//assigned to val
+
+example:
+   std::vector<int>v1{1,2,3};
+   Magic(v1);//v1's 24 bytes (pointers) copy to val
+
+
+Scenario 2: lvalue to accepted by reference 
+            No rvalues and no temporary storage and no ownership transfer
+example: 
+   void Magic(std::vector<int>& v);
+
+example: 
+   vector<int> v1{1,2,3};
+
+   Magic(v1);
+   // not allowed Magic(vector<int>{1,2,3}); //compile time error
+
+
+
+Scenario 3: I only want a single copy of data.
+            I only want rvalues so that user cannot create duplicate copy of data.
+            Data should not be owned by Main
+      example: 
+   void Magic(std::vector<int>&& v);
+
+example: 
+   vector<int> v1{1,2,3};
+   Magic(std::move(v1)); //by rvalue reference, Okay
+   Magic(std::vector<int>{1,2,3});
+   Magic(v1)//not allowed // compile time error
+
+
+
+Scenario 4: I want to Design a function where lvalues are accepted by reference
+            I also want rvalues to be accepted by assignment.
+
+            [destination function will only see data as read-only]
+
+      void Magic(const std::vector<int>& val );
+
+      example:
+      
+      vector<int> v1{1,2,3};
+      Magic(v1);
+      Magic(std::vector<int>{1,2,3});
+      Magic(std::move(v1))
+
+      
+

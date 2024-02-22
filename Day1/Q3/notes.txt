@@ -1,0 +1,60 @@
+Abstraction
+    - Not providing the implementation details so that :
+        a) It can be provided at a later point in the code hierarchy.
+        b) We can explain functionality without significant focus on implementation details.
+
+
+Inheritance
+    - Either you specialize the implementation for a specific subcatgory
+                                OR
+    - You develop logic which can be generalized to many types
+
+Polymorphism
+    - 
+
+Encapsulation
+
+Class & objects
+
+Association
+
+Composition
+
+Aggregation
+
+Containerization
+
+Containment
+
+
+
+
+
+There should be a way to create model for data(like class or template).
+There should be a way to represent state for something(current states).
+You should be able to execute type specific functions(functions based on types).
+
+
+
+
+
+Const keywords Rules
+
+
+    Rule 1: const is applied to the token on its immediate left. If there is nothing to the left of const, apply const on the token to its immediate right
+
+    Rule 2: pointer symbol * is considered a separate token
+
+Only a function marked by const keyword can be called by const object
+/*
+    default and delete special member functions
+    override
+    member list initialization
+    in-class initialization
+    for_Each(range based for loop)
+    enum class
+    constructor delegation
+    stl::array
+    using keyword
+*/
+

@@ -1,0 +1,29 @@
+
+
+            Data Binding                    Vs                       Encapsulation
+
+1) The concept of relating/binding member    |1) Hiding the internal implementation of the object
+   functions with data member                |   from any party/entity/line of code outside the 
+                                             |   class. You can use data binding to achieve 
+2)                                           |   Encapsulation providing functions as layer between 
+                                             |   data and outside world.
+                                             |
+                                             |                                              
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+            
+
+
+Abstraction: Hiding the implementation details of a behiaviour(functions) so that:
+a) It allows programmers to reimplement a functionality in a different way down the class hierarchy by overriding in child classes.
+
+b) By using Abstraction we can talk in "ABSTRACT" terns while explaining behiaviour.

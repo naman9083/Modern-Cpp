@@ -1,0 +1,16 @@
+ptr [0x100H]
+
+    name = ptr
+    content = 0x100H
+    size = 8bytes
+    address = 0x11H
+
+
+
+
+
+
+Unique Pointer 
+
+    -using std::shared_ptr<Example1> sptr{std::make_shared<Example1>(234234,"Naman")};
+    -from library <memory>
