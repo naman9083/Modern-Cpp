@@ -1,11 +1,11 @@
 # Modern CPP Training
 
-##This is training code and material taught during the Modern CPP training in KPIT Technologies. This includes the following topics:
+## This is training code and material taught during the Modern CPP training in KPIT Technologies. This includes the following topics:
     - C++11
     - C++14
     - C++17
 
-##Mainly, training focussed on the following topics:
+## Mainly, training focussed on the following topics:
     - Modern C++ features
     - STL
     - Multithreading
@@ -16,7 +16,7 @@
     - Regular Expressions
     - C++11/14/17 features
 
-##Also, the training includes the following tools:
+## Also, the training includes the following tools:
     - CMake
     - Google Test
     - Doxygen
