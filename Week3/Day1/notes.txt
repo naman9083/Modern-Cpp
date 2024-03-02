@@ -1,0 +1,15 @@
+Processor: It is a hardware device based on SILICON(ATLEAST TILL TODAY) which executed instructions given
+           E.g Intel i7 12Gen-1265U
+
+Core: It is a section of the processor which is cabable of executing one whole process 
+
+[ c1 | c2  ]
+[ c3 | c4  ]
+[ c5 | c6  ]
+[ c7 | c8  ]
+[ c9 | c10 ]
+
+SINGLE THREAD, SINGLE PROCESS, SYNCHRONOUS PROGRAMS!
+
+
+Delays: IO Delay, CPU-BOUND Delay!

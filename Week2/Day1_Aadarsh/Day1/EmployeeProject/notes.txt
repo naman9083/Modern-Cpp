@@ -1,0 +1,16 @@
+How to find composition and aggregation : 
+    If you take pointer of class B in class A                                       
+    we say that class A is composed with class B as a member
+
+    If you take reference of class B in class A
+    we say that class A is aggregated with class B as a member
+
+Marathon: 
+1. Proper format, naming convension , comments
+2. Multiple file
+3. All functionalities working with Proper output ,corner case (proper exception handling)
+4. Main side client code 
+
+less relevant: (for week 1)
+1. use of smart pointers
+2. custom exception

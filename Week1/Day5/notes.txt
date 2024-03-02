@@ -1,0 +1,195 @@
+
+
+            Data Binding                    Vs                       Encapsulation
+
+1) The concept of relating/binding member    |1) Hiding the internal implementation of the object
+   functions with data member                |   from any party/entity/line of code outside the 
+                                             |   class. You can use data binding to achieve 
+2)                                           |   Encapsulation providing functions as layer between 
+                                             |   data and outside world.
+                                             |
+                                             |                                              
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+                                             |
+            
+
+
+Abstraction: Hiding the implementation details of a behiaviour(functions) so that:
+a) It allows programmers to reimplement a functionality in a different way down the class hierarchy by overriding in child classes.
+
+b) By using Abstraction we can talk in "ABSTRACT" terns while explaining behiaviour.
+
+
+
+Find the details of an account based on ID, calculate, min, max, total or print details of cheque based on cheque number, etc.
+
+
+
+
+Standard Pattern for Solving problem
+
+1) Read the problem statement completely twice at least before doing anything!
+2) Compile program only when it is fully completed.
+3) Always work on individula functions only, Breakdown entire solution into small-small sections!
+4) Always draw a diagram
+5) Spend more time in designing the solution for each functionality rather than implementating it.    
+
+
+
+
+
+Vitual Keyword Usage:
+
+Scenario 1: I want to model some data. Bind members when accessible and Perform basic functions 
+   - Create a simple class.
+   - Bind data members with member functions. Keep all data private.
+
+
+
+Scenario 2: I want to create types abd sub-types so that I can generalize operalizes or implement specific solutions for specific sub-categories
+   Then, ask the following questions:
+      a) Are all method implemented in all classes?
+            - if yes, no need for pure virtual functions
+      b) Are we going tp create objects of multiple child classes and store them together in the same container?
+         - if yes, we need to use upcasting.
+         - Base class mehods must be marked as virtual.
+         - Destrcutor must be marked as virtual
+
+      c) Do we need to make the base class abstract/ Do we need to prevent to instatiation (object creation for base class?)
+
+      d) I'm not very sure if method will be overriden. Maybe in future Not sure currently
+         - Mark all such mehod as virtual
+Rule 1:
+   For a class that contains at least 1 virtual method 
+   A virtual table is created in memory.
+   This table has addresses for the virtual methods functions 
+
+Rule 2:
+   If a class inherits from a parent class that also contains a VTable, the child will also implementits own VTable
+
+A* ptr = new B();
+
+
+ptr->Display();// B Display;
+ptr->Test();// A Test;
+
+
+//step 1: verify where is display function
+   - Go to class whose type is ptr's type
+   - Go to A class. Verify whether this function is atleast declared in class A
+
+//step 2: Verify if the method is non-virtual. If yes, call the function
+            -if the function is virtual proceed to step 3:
+
+//step 3: Now find the type of RHS(Object type).Find the VTable for the object and call function based on Entry IN VTABLE
+Dynamic Method Dispatch:
+
+
+      class A{
+         ....
+         ....
+         static //hidden member *vptr;
+         public:
+            virtual void display(){
+               std::Cout<< "A display\n";
+            }
+            void Test(){
+               std::cout<<"A class test method\n";
+            }
+      };
+      class B{
+
+         ....
+         ....
+         public: 
+         virtual void Display() ovverride {
+            std::cout<<"B's Dispatch\n";
+            
+         }
+
+         void Test(){
+            std:: cout<<"B test called\n"; 
+         }
+      }
+
+
+
+
+
+VTable:
+
+For a class that contains atleast one virtual method a virtual table is created in memory
+This table has addresses for the virtual methods functions.
+
+
+Class A VTable
+[A :: Display():: 0x 10045H]
+
+0x777H
+   ^
+   |
+   |
+   |
+   |
+   |
+[vptr]
+
+Class B VTable
+[B :: Display():: 0x 10045H]
+
+0x777H
+   ^
+   |
+   |
+   |
+   |
+   |
+[vptr]
+
+
+
+
+/*
+   Assumption: Pointer is of parent type:
+      1: I want to call fn. Fn exists in the parent .
+      Fn also exists in the child. But fn is non-virtual.
+
+      YOU CAN USE DYNAMIC_CAST because METHOD DOES EXIST IN THE CHILD.
+
+
+      you can use ptr->fn()// this will call parent function.
+
+      2: I want to call fn. Fn exists in the parent.
+      Fn does not exist in the child. Fn in non-virtual
+
+      you can use ptr->fn()// this will call parent function
+
+
+      YOU SHOULD NOT USE DYNAMIC_CAST because METHOD DOES NOT EXIST IN THE CHILD. SO WHAT's the BLOODY POINT?
+
+
+      3, I want to call fn. Fn exits in the child but not in parent class. Fn is non-virtual.
+
+      PARENT POINTER IS PRACTICALLY USELESS. YOU HAVE TO USE DYNAMIC_CAST
+
+      4. I want to call fn. fn exits in the parent .
+         fn also exists in the child. But is marked virtual
+
+         COMPILER WILL CALL THE MOST DERIVED VERSION OF THE fn FROM THE INHERITANCE HIERARCHY 
+
+         PARENT
+         /    \
+        /      \
+       /        \
+      /          \
+   CHILD1       CHILD2
+*/

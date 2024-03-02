@@ -1,0 +1,35 @@
+1) App starts
+2) Network Setup
+3) using Network config, setup data transfer to a database. Connection will be established
+4) using the database access pointer, write data into database
+
+
+
+
+
+
+
+
+
+
+
+Step 1 ---------> App starts====> APP ID It has to be carried into the second function
+
+Step 2 ---------> Network Setup=> We get IP address and port number, has to be carried in third function.
+
+Step 3 ---------> Config =======> Using Network config, setup data transfer to a database. Connection will be established
+                                        - We'll get a database connection cursor object. take this to fn4
+
+Step 4 ---------> Acces pointer=> Using the database access, write data into 
+
+
+
+
+
+
+
+
+
+
+
+

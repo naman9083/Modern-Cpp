@@ -1,0 +1,32 @@
+1)  #undefined reference to <function-name>
+    - The function defition/body/implementation does not exist!
+    - body nhi bnaye ho function ka
+
+2)  #<identifier> not declared in scope
+    - Function name being used does not appear in declared symbols
+    - Variable declared does not appear in available names
+    - likha hi nhi hai pr use krre ho kaise log ho be tum
+
+
+3)  Redefition Error 
+    - Multiple include files
+    - Multiple defitions found by compiler 
+    - Header gaurd lgalo chalbe krega
+ 
+4) Error matching 
+
+5) Too few arguments/ Too many arguments
+
+    - Parameters passed is less/more than expected by the method
+    - Because there is no function with the given number of arguments this error happens
+
+6) Invalid Initialisation of reference of type --- from ------     
+
+    - Wrong data-type variable passed by the user
+    - Mis-match of data-type  cause this type of error
+
+
+7) No matchinf function call 
+    - Either given wrong type of arguements or that called function does not even existed in the project
+    - 
+    
