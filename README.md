@@ -539,3 +539,94 @@ int main()
     return 0;
 }
 ```
+
+# Optional Class in C++
+- In C++17, a new class was introduced.
+- It is called `std::optional`.
+- It is used to represent an optional object.
+- It is used to avoid the null pointers.
+- It is used to avoid the null references.
+- It is used to avoid the null values.
+
+```cpp
+#include <iostream>
+#include <optional>
+std::optional<int> getValue()
+{
+    return 10;
+}
+int main()
+{
+    std::optional<int> x = getValue(); // Optional Class
+    if(x.has_value())
+    {
+        std::cout << x.value() << std::endl;
+    }
+    return 0;
+}
+```
+# Variant Class in C++
+- In C++17, a new class was introduced.
+- It is called `std::variant`.
+- It is used to represent a type-safe union.
+- It is used to avoid the null pointers.
+- It is used to avoid the null references.
+- It is used to avoid the null values.
+
+```cpp
+#include <iostream>
+#include <variant>
+int main()
+{
+    std::variant<int, float, std::string> v; // Variant Class
+    v = 10;
+    std::cout << std::get<int>(v) << std::endl;
+    v = 20.5f;
+    std::cout << std::get<float>(v) << std::endl;
+    v = "Hello";
+    std::cout << std::get<std::string>(v) << std::endl;
+    return 0;
+}
+```
+# If-Initalizer in C++
+- In C++17, a new way of initializing the variables was introduced.
+- It is called if-initializer.
+- It is used to initialize the variables inside the if statement.
+- It is used to make the code more readable, space-efficient and maintainable.
+
+```cpp
+#include <iostream>
+bool display()
+{
+    std::cout << "Display" << std::endl;
+    return true;
+}
+int main()
+{
+    if(auto x = display()) // If-Initializer
+    {
+        std::cout << x << std::endl;
+    }
+    return 0;
+}
+```
+# Fold Expressions in C++
+- In C++17, a new way of expanding the parameter pack was introduced.
+- It is called fold expressions.
+- It is used to expand the parameter pack.
+- It is used to make the code more readable and maintainable.
+
+```cpp
+#include <iostream>
+template<typename... Args>
+auto sum(Args... args)
+{
+    return (args + ...); // Fold Expression
+}
+int main()
+{
+    std::cout << sum(10, 20, 30, 40, 50) << std::endl; // 150
+    return 0;
+}
+```
+
