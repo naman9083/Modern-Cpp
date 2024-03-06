@@ -630,3 +630,208 @@ int main()
 }
 ```
 
+# Thread Class in C++
+- In C++, the `std::thread` class is used to create a new thread.
+- It is used to execute the function in a separate thread.
+- It is used to make the code more responsive and efficient.
+- It is used to avoid the blocking of the main thread.
+
+```cpp
+#include <iostream>
+#include <thread>
+void display()
+{
+    std::cout << "Display" << std::endl;
+}
+int main()
+{
+    std::thread t1(display); // Thread Class
+    t1.join();
+    return 0;
+}
+```
+# Mutex Class in C++
+- In C++, the `std::mutex` class is used to protect the shared resources.
+- It is used to create a critical section.
+- It is used to avoid resource sharing conflicts.
+- It is used to protect the shared resources from the access of multiple threads.
+
+```cpp
+#include <iostream>
+#include <thread>
+#include <mutex>
+std::mutex m;
+void display()
+{
+    m.lock(); // Lock
+    for(int i = 0; i < 5; i++)
+    {
+        std::cout << "Display" << std::endl;
+    }
+    m.unlock(); // Unlock
+}
+int main()
+{
+    std::thread t1(display);
+    std::thread t2(display);
+    t1.join();
+    t2.join();
+    return 0;
+}
+```
+# Condition Variable in C++
+- In C++, the `std::condition_variable` class is used to synchronize the threads.
+- It is used to avoid the busy waiting.
+- It is used to make the code more responsive and efficient.
+- It is used to avoid the blocking of the main thread.
+
+```cpp
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+std::mutex m;
+std::condition_variable cv;
+bool ready = false;
+void display()
+{
+    std::unique_lock<std::mutex> ul(m);
+    cv.wait(ul, []{return ready;});
+    std::cout << "Display" << std::endl;
+}
+int main()
+{
+    std::thread t1(display);
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    {
+        std::lock_guard<std::mutex> lg(m);
+        ready = true;
+    }
+    cv.notify_one();
+    t1.join();
+    return 0;
+}
+```
+# Future and Promise in C++
+- In C++, the `std::future` class is used to get the result from the thread.
+- It is used to make the code more responsive and efficient.
+- It is used to avoid the blocking of the main thread.
+- It is used to get the result from the thread.
+- It is used to get the result from the asynchronous task.
+
+```cpp
+#include <iostream>
+#include <thread>
+#include <future>
+int display()
+{
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    return 10;
+}
+int main()
+{
+    std::future<int> f = std::async(display); // Future Class
+    std::cout << f.get() << std::endl;
+    return 0;
+}
+```
+# STL_Algorithms in C++
+- In C++, the Standard Template Library (STL) provides a rich set of algorithms.
+- They are used to perform the operations on the containers.
+- They are used to make the code more readable and maintainable.
+- They are used to avoid the explicit use of loops.
+- There are more than 100 algorithms in the STL like `sort`, `find`, `count`, `accumulate`, `transform`, `for_each`, `copy`, `remove`, `replace`, `reverse`, `rotate`, `unique`, `min`, `max`, `minmax`, `clamp`, `equal`, `mismatch`, `lexicographical_compare`, `is_permutation`, `next_permutation`, `prev_permutation`, `merge`, `includes`, `set_union`, `set_intersection`, `set_difference`, `set_symmetric_difference`, `nth_element`, `partial_sort`, `partial_sort_copy`, `is_sorted`, `is_heap`, `is_partitioned`, `is_permutation`, `is_sorted_until`, `is_heap_until`, `is_partitioned_until`, `is_permutation_until`, `search`, `find`, `find_if`, `find_if_not`, `find_end`, `find_first_of`, `adjacent_find`, `count`, `count_if`, `mismatch`, `equal`, `is_permutation`, `search_n`, `for_each`, `transform`, `generate`, `generate_n`, `remove`, `remove_if`, `remove_copy`, `remove_copy_if`, `replace`, `replace_if`, `replace_copy`, `replace_copy_if`, `swap`, `swap_ranges`, `iter_swap`, `reverse`, `reverse_copy`, `rotate`, `rotate_copy`, `random_shuffle`, `shuffle`, `sample`, `unique`, `unique_copy`, `is_partitioned`, `partition`, `stable_partition`, `partition_copy`, `partition_point`, `sort`, `stable_sort`, `partial_sort`, `partial_sort_copy`, `nth_element`, `lower_bound`, `upper_bound`, `binary_search`, `equal_range`, `merge`, `inplace_merge`, `includes`, `set_union`, `set_intersection`, `set_difference`, `set_symmetric_difference`, `push_heap`, `pop_heap`, `make_heap`, `sort_heap`, `is_heap`, `is_heap_until`, `min`, `max`, `minmax`, `min_element`, `max_element`, `minmax_element`, `lexicographical_compare`, `next_permutation`, `prev_permutation`, `clamp`, `iota`, `accumulate`, `inner_product`, `adjacent_difference`, `partial_sum`, `reduce`, `transform_reduce`, `exclusive_scan`, `inclusive_scan`, `transform_exclusive_scan`, `transform_inclusive_scan`, `sample`, `search`, 
+`search_n`, `find`, `find_if`, `find_if_not`, `find_end`, `find_first_of`, `adjacent_find`, `count`, `count_if`, `mismatch`, `equal`, `is_permutation`, `search_n`, `for_each`, `transform`, `generate`, `generate_n`, `remove`, `remove_if`, `remove_copy`, `remove_copy_if`, `replace`, `replace_if`, `replace_copy`, `replace_copy_if`, `swap`, `swap_ranges`, `iter_swap`, `reverse`, `reverse_copy`, `rotate`, `rotate_copy`, `random_shuffle`, `shuffle`, `sample`, `unique`, `unique_copy`, `is_partitioned`, `partition`, `stable_partition`, `partition_copy`, `partition_point`, `sort`, `stable_sort`, `partial_sort`, `partial_sort_copy`, `nth_element`, `lower_bound`, `upper_bound`, `binary_search`, `equal_range`, `merge`, `inplace_merge`, `includes`, `set_union`, `set_intersection`, `set_difference`, `set_symmetric_difference`, `push_heap`, `pop_heap`, `make_heap`, `sort_heap`, `is_heap`, `is_heap_until`, `min`, `max`, `minmax`, `min_element`, `max_element`, `minmax_element`, `lexicographical_compare`, `next_permutation`, `prev_permutation`, `clamp`, `iota`, `accumulate`, `inner_product`, `adjacent_difference`, `partial_sum`, `reduce`, `transform_reduce`, `exclusive_scan`, `inclusive_scan`, `transform_exclusive_scan`, `transform_inclusive_scan`, `sample`, `search`, `search_n`, `find`, `find_if`, `find_if_not`, `find_end`, `find_first_of`, `adjacent_find`, `count`, `count_if`, `mismatch`, `equal`, `is_permutation`, `search_n`, `for_each`, `transform`, `generate`, `generate_n`, `remove`, `remove_if`, `remove_copy`, `remove_copy_if`, `replace`, `replace_if`, `replace_copy`, `replace_copy_if`, `swap`, `swap_ranges`, `iter_swap`, `reverse`, `reverse_copy`, `rotate`, `rotate_copy`, `random_shuffle`, `shuffle`, `sample`, `unique`, `unique_copy`, `is_partitioned`, `partition`, `stable_partition`,
+`partition_copy`, `partition_point`, `sort`, `stable_sort`, `partial_sort`, `partial_sort_copy`, `nth_element`, `lower_bound`, `upper_bound`, `binary_search`, `equal_range`, `merge`, `inplace_merge`, `includes`, `set_union`, `set_intersection`, `set_difference`, `set_symmetric_difference`, `push_heap`, `pop_heap`, `make_heap`, `sort_heap`, `is_heap`, `is_heap_until`, `min`, `max`, `minmax`, `min_element`, `max_element`, `minmax_element`, `lexicographical_compare`, `next_permutation`, `prev_permutation`, `clamp`, `iota`, `accumulate`, `inner_product`, `adjacent_difference`, `partial_sum`, `reduce`, `transform_reduce`, `exclusive_scan`, `inclusive_scan`, `transform_exclusive_scan`, `transform_inclusive_scan`, `sample`, `search`, `search_n`, `find`, `find_if`, `find_if_not`, `find_end`, `find_first_of`, `adjacent_find`, `count`, `count_if`, `mismatch`, `equal`, `is_permutation`, `search_n`, `for_each`, `transform`, `generate`, `generate_n`, `remove`, `remove_if`, `remove_copy`, `remove_copy_if`, `replace`, `replace_if`, `replace_copy`, `replace_copy_if`, `swap`, `swap_ranges`, `iter_swap`, `reverse`, `reverse_copy`, `rotate`, `rotate_copy`, `random_shuffle`, `shuffle`, `sample`, `unique`, `unique_copy`, `is_partitioned`, `partition`, `stable_partition`, `partition_copy`, `partition_point`, `sort`, `stable_sort`, `partial_sort`, `partial_sort_copy`, `nth_element`, `lower_bound`, `upper_bound`, `binary_search`, `equal_range`, `merge`, `inplace_merge`, `includes`, `set_union`, `set_intersection`, `set_difference`, `set_symmetric_difference`, `push_heap`, `pop_heap`, `make_heap`, `sort_heap`, `is_heap`, `is_heap_until`, `min`, `max`, `minmax`, `min_element`, `max_element`, `minmax_element`, `lexicographical_compare`, `next_permutation`, `prev_permutation`, `clamp`, `iota`, `accumulate`, `inner_product` etc.
+    
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::for_each(v.begin(), v.end(), [](int x)
+    {
+        std::cout << x << std::endl;
+    });
+    std::sort(v.begin(), v.end());
+    std::find(v.begin(), v.end(), 30);
+    std::count(v.begin(), v.end(), 30);
+    std::accumulate(v.begin(), v.end(), 0);
+    std::transform(v.begin(), v.end(), v.begin(), [](int x)
+    {
+        return x * 2;
+    });
+    std::copy(v.begin(), v.end(), std::ostream_iterator<int>(std::cout, " "));
+    std::remove(v.begin(), v.end(), 30);
+    std::replace(v.begin(), v.end(), 30, 300);
+    std::reverse(v.begin(), v.end());
+    std::rotate(v.begin(), v.begin() + 2, v.end());
+    std::unique(v.begin(), v.end());
+    return 0;
+}
+```
+
+# STL_Containers in C++
+- In C++, the Standard Template Library (STL) provides a rich set of containers.
+- They are used to store the data.
+- They are used to make the code more readable and maintainable.
+- They are used to avoid the explicit use of arrays.
+- There are more than 10 containers in the STL like `array`, `vector`, `deque`, `list`, `forward_list`, `set`, `multiset`, `map`, `multimap`, `unordered_set`, `unordered_multiset`, `unordered_map`, `unordered_multimap`, `stack`, `queue`, `priority_queue`, `bitset`, `valarray`, `span`, `string`, `wstring`, `u16string`, `u32string`, `basic_string`, `basic_string_view`, `basic_stringbuf`, `basic_istringstream`, `basic_ostringstream`, `basic_stringstream`, `basic_filebuf`, `basic_ifstream`, `basic_ofstream`, `basic_fstream`, `basic_syncbuf`, `basic_osyncstream`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex`, `basic_match_results`, `basic_regex_iterator`, `basic_regex_token_iterator`, `basic_ostream`, `basic_istream`, `basic_iostream`, `basic_streambuf`, `basic_regex' etc.
+    
+```cpp
+#include <iostream>
+#include <vector>
+#include <list>
+#include <deque>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::list<int> l = {10, 20, 30, 40, 50};
+    std::deque<int> d = {10, 20, 30, 40, 50};
+    std::set<int> s = {10, 20, 30, 40, 50};
+    std::map<int, std::string> m = {{10, "A"}, {20, "B"}, {30, "C"}, {40, "D"}, {50, "E"}};
+    std::unordered_set<int> us = {10, 20, 30, 40, 50};
+    std::unordered_map<int, std::string> um = {{10, "A"}, {20, "B"}, {30, "C"}, {40, "D"}, {50, "E"}};
+    return 0;
+}
+```
+
+# STL_Iterators in C++
+- In C++, the Standard Template Library (STL) provides a rich set of iterators.
+- They are used to iterate over the elements of the containers.
+- They are used to make the code more readable and maintainable.
+- They are used to avoid the explicit use of loops.
+- There are more than 10 iterators in the STL like `input_iterator`, `output_iterator`, `forward_iterator`, `bidirectional_iterator`, `random_access_iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator`, `ostreambuf_iterator`, `iterator`, `reverse_iterator`, `move_iterator`, `insert_iterator`, `front_insert_iterator`, `back_insert_iterator`, `istream_iterator`, `ostream_iterator`, `istreambuf_iterator` etc.
+    
+```cpp
+#include <iostream>
+#include <vector>
+#include <iterator>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::vector<int>::iterator it = v.begin();
+    std::advance(it, 2);
+    std::cout << *it << std::endl;
+    std::vector<int>::reverse_iterator rit = v.rbegin();
+    std::cout << *rit << std::endl;
+    std::vector<int>::const_iterator cit = v.cbegin();
+    std::vector<int>::const_reverse_iterator crit = v.crbegin();
+    std::vector<int>::const_iterator it1 = v.begin();
+    std::vector<int>::const_iterator it2 = v.end();
+    std::vector<int>::const_iterator it3 = v.cbegin();
+    std::vector<int>::const_iterator it4 = v.cend();
+    std::vector<int>::const_reverse_iterator rit1 = v.rbegin();
+    std::vector<int>::const_reverse_iterator rit2 = v.rend();
+    std::vector<int>::const_reverse_iterator rit3 = v.crbegin();
+    std::vector<int>::const_reverse_iterator rit4 = v.crend();
+    return 0;
+}
+```
+
