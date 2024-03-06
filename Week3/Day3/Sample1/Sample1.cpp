@@ -14,6 +14,41 @@
             - std::lock_gaurd : (Mutex who completed masters!) scope based / RAII principle following mutex. No manual LOCK/UNLOCK
             - std::unique_lock : Scope based as well as manual lock/unlock.
 
-        
+
 
 */
+
+#include <future>
+
+void factorial(std::future<int> &ft)
+{
+    long long *ptr = (long long *)malloc(4); // line can be executed before int
+    // wait for event
+    long long n = ft.get();
+    long long result = 1;
+    for (int i = 2; i <= n; i++)
+    {
+        result *= i;
+    }
+    *ptr = result;
+    std::cout << "Final answer is: " << *ptr << "\n";
+    free(ptr);
+}
+
+int main()
+{
+    // make a promise: compiler, I will give you an integer IN FUTURE
+    //  (&factorial, )
+
+    std::promise<int> pr;
+    std::future<int> ft = pr.get_future();
+    std::future<void> result = std::async(&factorial, std::ref(ft));
+
+    int value = 0;
+    std::cin >> value;
+
+    pr.set_value(value);
+
+    result.wait();
+    return 0;
+}

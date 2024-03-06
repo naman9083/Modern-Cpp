@@ -12,15 +12,15 @@ Fn printDetails = [](const VContainer &con)
 {
     for (VCar v : con)
     {
-    
-    
-    std::visit(
-        [](auto &&value)
-        {
-            std::cout << *value;
-            std::cout << "\n";
-        },
-        v);
+
+        std::visit(
+            [](auto &&value)
+            {
+                std::lock_guard<std::mutex>lk(mt);
+                std::cout << *value;
+                std::cout << "\n";
+            },
+            v);
     }
 };
 
@@ -31,10 +31,11 @@ Fn printHighestMileage = [](const VContainer &vcon)
 
     for (const VCar v : vcon)
     {
-    std::lock_guard<std::mutex> ul(mt);
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
         if (std::holds_alternative<DieselCarP>(v))
         {
+            std::lock_guard<std::mutex> ul(mt);
+           
             DieselCarP ow = std::get<0>(v);
             highestMileage = std::max(highestMileage, ow->getMileage());
         }
