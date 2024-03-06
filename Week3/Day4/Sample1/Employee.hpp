@@ -38,6 +38,8 @@ public:
     Employee(std::string na_, float salary_, std::string designati_, unsigned int expY_);
 
     friend std::ostream &operator<<(std::ostream &os, const Employee &rhs);
+
+    // friend std::ostream &operator<<(std::ostream &os, const Employee &rhs);
 };
 
 #endif // EMPLOYEE_HPP

@@ -1,0 +1,9 @@
+default and delete special member functions
+    override
+    member list initialization
+    in-class initialization
+    for_Each(range based for loop)
+    enum class
+    constructor delegation
+    stl::array
+    using keyword

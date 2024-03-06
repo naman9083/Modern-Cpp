@@ -6,11 +6,13 @@ Employee::Employee(std::string na_, float salary_, std::string designati_, unsig
 }
 std::ostream &operator<<(std::ostream &os, const Employee &rhs)
 {
-    os << "Name: " << rhs.name << "\n"
-       << "Salary: " << rhs.salary << "\n"
-       << "Designation: " << rhs.designation << "\n"
-       << "Experience Years: " << rhs.expYear << "\n\n";
-
-    
+    os << "Name: " << rhs.name
+       << "\n"
+       << "Salary: " << rhs.salary
+       << "\n"
+       << "Designation: " << rhs.designation
+       << "\n"
+       << "ExpYear: " << rhs.expYear
+       << "\n";
     return os;
 }
