@@ -150,6 +150,473 @@ int main()
     return 0;
 }
 ```
+# Default Keyword in C++
+- In C++, we can default the special member functions using the `default` keyword.
+- It is used to explicitly default the special member functions.
+- It is used to allow the compiler to generate the special member functions.
+- It is used to allow the objects of the class to be copied or assigned.
+
+```cpp
+
+#include <iostream>
+class A
+{
+    int x;
+    int y;
+public:
+
+    A()=default; // Default Constructor
+    A(const A&)=default; // Copy Constructor
+    A& operator=(const A&)=default; // Copy Assignment Operator
+    ~A()=default; // Destructor
+    A(A&&)=default; // Move Constructor
+    A& operator=(A&&)=default; // Move Assignment Operator
+};
+int main()
+{
+    A a1; // Default Constructor
+    A a2(a1); // Copy Constructor
+    A a3;
+    a3=a2; // Copy Assignment Operator
+    return 0;
+}
+```
+# Composition in C++
+- In C++, composition is a way to combine objects of different classes.
+- It is used to create a complex object by using simple objects.
+- It is used to create a complex object by using the objects of other classes.
+- Composition is a "has-a" relationship rather than an "is-a" relationship.
+
+```cpp
+#include <iostream>
+class Address
+{
+    std::string city;
+    std::string state;
+    std::string country;
+public:
+    Address(std::string city, std::string state, std::string country) : city(city), state(state), country(country)
+    {
+    }
+    void display()
+    {
+        std::cout << city << " " << state << " " << country << std::endl;
+    }
+};
+class Employee
+{
+    int id;
+    std::string name;
+    Address* address; // Composition
+public:
+    Employee(int id, std::string name, Address* address) : id(id), name(name), address(address)
+    {
+    }
+    void display()
+    {
+        std::cout << id << " " << name << std::endl;
+        address->display();
+    }
+};
+int main()
+{
+    Address a1("New York", "New York", "USA");
+    Employee e1(101, "John", &a1);
+    e1.display();
+    return 0;
+}
+``` 
+# Aggregation in C++
+- In C++, aggregation is a way to combine objects of different classes.
+- It is used to create a complex object by using simple objects.
+- It is used to create a complex object by using the objects of other classes.
+- Aggregation is a "has-a" relationship rather than an "is-a" relationship.
+- Aggregation is a weak relationship.
+
+```cpp
+#include <iostream>
+class Address
+{
+    std::string city;
+    std::string state;
+    std::string country;
+public:
+    Address(std::string city, std::string state, std::string country) : city(city), state(state), country(country)
+    {
+    }
+    void display()
+    {
+        std::cout << city << " " << state << " " << country << std::endl;
+    }
+};
+class Employee
+{
+    int id;
+    std::string name;
+    Address address; // Aggregation
+public:
+    Employee(int id, std::string name, Address address) : id(id), name(name), address(address)
+    {
+    }
+    void display()
+    {
+        std::cout << id << " " << name << std::endl;
+        address.display();
+    }
+};
+int main()
+{
+    Address a1("New York", "New York", "USA");
+    Employee e1(101, "John", a1);
+    e1.display();
+    return 0;
+}
+```
+# Inheritance in C++
+- In C++, inheritance is a way to create a new class from an existing class.
+- It is used to create a new class from an existing class.
+- It is used to create a base class and a derived class.
+- It is used to create a parent class and a child class.
+- It is used to create a super class and a sub class.
+- It is used to create a general class and a specific class.
+
+```cpp
+#include <iostream>
+class A
+{
+    int x;
+    int y;
+public:
+    void display()
+    {
+        std::cout << "Display of A" << std::endl;
+    }
+};
+class B : public A // Inheritance
+{
+    int z;
+public:
+    void display()
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    B b;
+    b.display(); // Display of B
+    b.A::display(); // Display of A
+    return 0;
+}
+```
+# Casting in C++
+- In C++, casting is a way to convert one data type to another data type.
+- It is used to convert one data type to another data type.
+- It is used to convert the base class pointer to the derived class pointer.
+- It is used to convert the derived class pointer to the base class pointer.
+- It is of four types:
+    - Static Cast
+    - Dynamic Cast
+    - Const Cast
+    - Reinterpret Cast
+
+```cpp
+#include <iostream>
+class A
+{
+public:
+    void display()
+    {
+        std::cout << "Display of A" << std::endl;
+    }
+};
+class B : public A
+{
+public:
+    void display()
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    B b;
+    A* a = &b; // Implicit Conversion
+    B* b1 = static_cast<B*>(a); // Static Cast
+    b1->display();
+    A* a1 = static_cast<A*>(&b); // Static Cast
+    a1->display();
+    return 0;
+}
+```
+## Static Cast
+- It is used to convert the data type to another data type.
+- It is used to convert the base class pointer to the derived class pointer.
+- It is used to convert the derived class pointer to the base class pointer.
+- It is used to convert the data type to the void pointer.
+- It is used to convert the void pointer to the data type.
+- It is used to convert the data type to the integral type.
+- It is used to convert the integral type to the data type.
+```cpp
+#include <iostream>
+int main()
+{
+    int x = 10;
+    double y = static_cast<double>(x); // Static Cast
+    std::cout << y << std::endl;
+    return 0;
+}
+```
+## Dynamic Cast
+- It is used to convert the base class pointer to the derived class pointer.
+- It is used to convert the derived class pointer to the base class pointer.
+- It is used to convert the data type to another data type.
+- It is used to convert the data type to the void pointer.
+- It is used to convert the void pointer to the data type.
+```cpp
+#include <iostream>
+class A
+{
+public:
+    virtual void display()
+    {
+        std::cout << "Display of A" << std::endl;
+    }
+};
+class B : public A
+{
+public:
+    void display()
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    A* a = new B();
+    B* b = dynamic_cast<B*>(a); // Dynamic Cast
+    b->display();
+    return 0;
+}
+```
+## Const Cast
+- It is used to remove the constness of the variable.
+- It is used to add the constness to the variable.
+- It is used to convert the data type to another data type.
+- It is used to convert the data type to the void pointer.
+- It is used to convert the void pointer to the data type.
+```cpp
+#include <iostream>
+int main()
+{
+    const int x = 10;
+    int* y = const_cast<int*>(&x); // Const Cast
+    *y = 20;
+    std::cout << x << std::endl;
+    return 0;
+}
+```
+## Reinterpret Cast
+- It is used to convert the data type to another data type.
+- It is used to convert the data type to the void pointer.
+- It is used to convert the void pointer to the data type.
+- It is used to convert the pointer to the integral type.
+- It is used to convert the integral type to the pointer.
+```cpp
+#include <iostream>
+int main()
+{
+    int x = 10;
+    int* y = &x;
+    int z = reinterpret_cast<int>(y); // Reinterpret Cast
+    std::cout << z << std::endl;
+    return 0;
+}
+```
+# Two types of casting
+- Implicit Casting
+- Explicit Casting
+## Implicit Casting
+- It is done by the compiler automatically.
+- It is done when the data type is compatible.
+- It is done when the data type is smaller to larger.
+- It is done when the data type is larger to smaller.
+- It is done when the data type is signed to unsigned.
+- It is done when the data type is unsigned to signed.
+## Explicit Casting
+- It is done by the programmer explicitly.
+- It is done when the data type is not compatible.
+- It is done when the data type is larger to smaller.
+# Polymorphism and Casting in C++
+- In C++, polymorphism is a way to perform a single action in different ways.
+- It is used to create a base class and a derived class.
+- It is used to create a parent class and a child class.
+- It is used to create a super class and a sub class.
+- It is used to create a general class and a specific class.
+- We can cast the base class pointer to the derived class pointer using the `dynamic_cast` operator and the `virtual` function, this is called runtime polymorphism also it is called late binding.
+- We can cast the base class pointer to the derived class pointer using the `static_cast` operator, this is called compile-time polymorphism also it is called early binding.
+## Upcasting
+- It is used to convert the derived class pointer to the base class pointer.
+- It is used to convert the derived class reference to the base class reference.
+- It is used to convert the derived class object to the base class object.
+- It is used to convert the derived class pointer to the base class pointer using the `static_cast` operator.
+- It is used to convert the derived class reference to the base class reference using the `static_cast` operator.
+- It is used to convert the derived class object to the base class object using the `static_cast` operator.
+```cpp
+#include <iostream>
+class A
+{
+public:
+    virtual void display()
+    {
+        std::cout << "Display of A" << std::endl;
+    }
+};
+class B : public A
+{
+public:
+    void display()
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    B b;
+    A* a = static_cast<A*>(&b); // Upcasting
+    a->display();
+    return 0;
+}
+```
+## Downcasting
+- It is used to convert the base class pointer to the derived class pointer.
+- It is used to convert the base class reference to the derived class reference.
+- It is used to convert the base class object to the derived class object.
+- It is used to convert the base class pointer to the derived class pointer using the `dynamic_cast` operator.
+- It is used to convert the base class reference to the derived class reference using the `dynamic_cast` operator.
+- It is used to convert the base class object to the derived class object using the `dynamic_cast` operator.
+```cpp
+#include <iostream>
+class A
+{
+public:
+    virtual void display()
+    {
+        std::cout << "Display of A" << std::endl;
+    }
+};
+class B : public A
+{
+public:
+    void display()
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    A* a = new B();
+    B* b = dynamic_cast<B*>(a); // Downcasting
+    b->display();
+    return 0;
+}
+```
+# Virtual Function in C++
+- In C++, a virtual function is a member function of the base class.
+- It is used to provide a specific implementation in the derived class.
+- It is used to provide a common interface to the base class and the derived class.
+- It is used to provide a common interface to the parent class and the child class.
+- It is used to provide a common interface to the super class and the sub class.
+- It is used to provide a common interface to the general class and the specific class.
+- It is used to achieve runtime polymorphism.
+- It is used to achieve late binding.
+```cpp
+#include <iostream>
+class A
+{
+public:
+    virtual void display() // Virtual Function
+    {
+        std::cout << "Display of A" << std::endl;
+    }
+};
+class B : public A
+{
+public:
+    void display() // Overriding
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    A* a = new B();
+    a->display(); // Display of B
+    return 0;
+}
+```
+# Pure Virtual Function in C++
+- In C++, a pure virtual function is a member function of the base class.
+- It is used to provide a specific implementation in the derived class.
+- It is used to provide a common interface to the base class and the derived class.
+- It is used to provide a common interface to the parent class and the child class.
+- It is used to provide a common interface to the super class and the sub class.
+- It is used to provide a common interface to the general class and the specific class.
+- It is used to achieve runtime polymorphism.
+- It is used to achieve late binding.
+```cpp
+#include <iostream>
+class A
+{
+public:
+    virtual void display()=0; // Pure Virtual Function
+};
+class B : public A
+{
+public:
+    void display() // Overriding
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    A* a = new B();
+    a->display(); // Display of B
+    return 0;
+}
+```
+# Abstract Class in C++
+- In C++, an abstract class is a class that contains at least one pure virtual function.
+- It is used to provide a common interface to the base class and the derived class.
+- It is used to provide a common interface to the parent class and the child class.
+- It is used to provide a common interface to the super class and the sub class.
+- It is used to provide a common interface to the general class and the specific class.
+- It is used to achieve runtime polymorphism.
+- It is mandatory to override the pure virtual function in the derived class.
+```cpp
+#include <iostream>
+class A
+{
+public:
+    virtual void display()=0; // Pure Virtual Function
+};
+class B : public A
+{
+public:
+    void display() // Overriding
+    {
+        std::cout << "Display of B" << std::endl;
+    }
+};
+int main()
+{
+    A* a = new B();
+    a->display(); // Display of B
+    return 0;
+}
+```
+
 # Using Keyword in C++
 - In C++, the `using` keyword is used to bring the base class members into the derived class scope.
 - It is used to avoid the ambiguity in the derived class.
@@ -834,4 +1301,6 @@ int main()
     return 0;
 }
 ```
+
+
 
