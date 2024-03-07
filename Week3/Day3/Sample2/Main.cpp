@@ -7,8 +7,8 @@ int main()
 
     Container c;
     // createObjects(c);
-    // std::thread t1(createObjects, std::ref(c));
-    // t1.join();
+    std::thread t1(createObjects, std::ref(c));
+    t1.join();
 
     try
     {
@@ -36,10 +36,18 @@ int main()
 
         deleteObjects(c);
     }
+    catch(std::future_error &ex){
+        if(ex.code()==std::future_errc::no_state){
+            std::cerr<<"Missing Input/Output\n";
+        }
+        if(ex.code()==std::future_errc::future_already_retrieved){
+            std::cerr<<"You already fetched the value don't try agian\n";
+        }
+    }
+    
     catch(const std::exception &e){
         std::cerr << e.what() << "\n";
     }
-    
 
 
     return 0;

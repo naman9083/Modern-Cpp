@@ -10,7 +10,7 @@ void deleteObjects(Container &data)
 {
     if (data.empty())
     {
-        throw EmptyContainerException("Data is empty\n", std::future_errc::broken_promise);
+        throw EmptyContainerException("Data is empty\n", std::future_errc::no_state);
     }
     for (Car *c : data)
     {
@@ -23,7 +23,7 @@ int TotalHorsePower(const Container &data)
 {
     if (data.empty())
     {
-        throw EmptyContainerException("Data is empty\n", std::future_errc::broken_promise);
+        throw EmptyContainerException("Data is empty\n", std::future_errc::no_state);
     }
     int total = 0;
     for (Car *c : data)
@@ -38,7 +38,7 @@ bool isContainerAllCarAbove700000(const Container &data)
 {
     if (data.empty())
     {
-        EmptyContainerException("Data is empty\n", std::future_errc::broken_promise);
+        EmptyContainerException("Data is empty\n", std::future_errc::no_state);
     }
     for (Car *c : data)
     {
@@ -52,7 +52,7 @@ Engine *EnginePointerToMinPriceCar(const Container &data)
 {
     if (data.empty())
     {
-        EmptyContainerException("Data is empty\n", std::future_errc::broken_promise);
+        EmptyContainerException("Data is empty\n", std::future_errc::no_state);
     }
     float min_price = 0.0f;
     Engine *e;
@@ -76,7 +76,7 @@ float AverageEngineTorque(const Container &data)
 {
     if (data.empty())
     {
-        EmptyContainerException("Data is empty\n", std::future_errc::broken_promise);
+        EmptyContainerException("Data is empty\n", std::future_errc::no_state);
     }
     float average = 0.0;
     for (Car *c : data)
@@ -90,7 +90,7 @@ std::string FindCarModelById(const Container &data, const std::string carId)
 {
     if (data.empty())
     {
-        EmptyContainerException("Data is empty\n", std::future_errc::broken_promise);
+        EmptyContainerException("Data is empty\n", std::future_errc::no_state);
     }
 
     std::string id = "";

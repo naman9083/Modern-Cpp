@@ -1301,6 +1301,46 @@ int main()
     return 0;
 }
 ```
+# Future Error
+- Future errors are used to caught those exceptions which are based on future and async functions.
+- They also inherit from `std::exception` class
+- We can define our own custom future exceptions by inheriting future error class.
+- Setting up the future error constructor, we can create our own custom future exception.
+```cpp
+#include <iostream>
+#ifndef EMPTYCONTAINER_HPP
+#define EMPTYCONTAINER_HPP
+
+#include <future>
+#include <string>
+class EmptyContainerException : public std::future_error
+{
+    std::string _msg;
+
+public:
+    virtual const char *what() const throw() override
+    {
+        return _msg.c_str();
+    }
+    EmptyContainerException() = delete;
+
+    EmptyContainerException(const EmptyContainerException &) = delete; // disabled copy constructor
+
+    EmptyContainerException(EmptyContainerException &&) = default; // disabled move constructor brand new in C++11
+
+    EmptyContainerException &operator=(const EmptyContainerException &) = delete; // disabled assignment operator
+    EmptyContainerException &operator=(EmptyContainerException &&) = delete;      // disabled assignment move operator brand new in C++11
+
+    EmptyContainerException(std::string msg,std::future_errc futureerr) :future_error(futureerr),_msg{msg}
+    {
+       
+    }
+
+    
+};
+#endif // EMPTYCONTAINER_HPP
+
+```
 
 
 
