@@ -1168,6 +1168,40 @@ int main()
 }
 ```
 
+# Copy Elision in C++
+- In C++, copy elision is a compiler optimization technique.
+- The compiler optimizes the code by avoiding the creation of the temporary objects.
+- It is also called return value optimization.
+- Compiler designers have designed the compiler in such a way that it can optimize the code by avoiding the creation of the temporary objects.
+- It is used to make the code more efficient and maintainable.
+
+```cpp
+#include <iostream>
+class A
+{
+public:
+    A()
+    {
+        std::cout << "Constructor" << std::endl;
+    }
+    A(const A&)
+    {
+        std::cout << "Copy Constructor" << std::endl;
+    }
+};
+A display()
+{
+    A a;
+    return a;
+}
+int main()
+{
+    A a = display();// output: Constructor because of copy elision
+    return 0;
+}
+```
+
+
 # Fold Expressions in C++
 
 - In C++17, a new way of expanding the parameter pack was introduced.
@@ -1967,6 +2001,44 @@ int main()
     {
         std::cout << i << std::endl;
     }
+    return 0;
+}
+```
+
+# std::forward and std::move in C++
+- In C++, the `std::forward` and `std::move` functions are used to forward the arguments and move the objects.
+- The `std::forward` function is used to forward the arguments to the other function, as it was received.
+- The `std::move` function is used to move the objects to the other function call stack.
+```cpp
+#include <iostream>
+#include <utility>
+void display(int &&x)
+{
+    std::cout << x << std::endl;
+}
+int main()
+{
+    int x = 10;
+    display(std::move(x));
+    return 0;
+}
+```
+```cpp
+#include <iostream>
+#include <utility>
+void display(int &&x)
+{
+    std::cout << x << std::endl;
+}
+void relay(int &&x)
+{
+    display(std::forward<int>(x));
+}
+
+int main()
+{
+    int x = 10;
+    relay(std::move(x));
     return 0;
 }
 ```
