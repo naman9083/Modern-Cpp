@@ -23,10 +23,10 @@
 
 */
 int value = 0;
-bool flag = false;
+
 std::mutex mt;
 std::condition_variable cv;
-
+bool flag = false;
 void operation()
 {
     int *ans = (int *)malloc(4);
@@ -54,7 +54,7 @@ int main()
 {
     // thread instantiated .
     // a new thread  is now available to be scheduled. (as good as already started)
-
+    
     std::thread t1(&operation);
     std::thread t2(&TakeInput);
 

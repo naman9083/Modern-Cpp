@@ -7,6 +7,6 @@ int main()
     if(id==0){
         printf("Child thread\n");
     }
-
+    
     return 0;
 }

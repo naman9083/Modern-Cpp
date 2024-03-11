@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/kpit/Documents/Modern CPP/Week3/Day3/Sample1",
-      "program": "/home/kpit/Documents/Modern CPP/Week3/Day3/Sample1/build/Debug/outDebug",
+      "cwd": "/home/kpit/Documents/Modern CPP/Week3/Day3/Sample2",
+      "program": "/home/kpit/Documents/Modern CPP/Week3/Day3/Sample2/app",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -1,0 +1,28 @@
+Copy Elision
+
+The compiler is allowed to elide copies where results are "as if" copies were made.
+Return Value Optimization (commonly called RVO) is one such instance.
+• Caller allocates space on stack for return value, passes the address to callee
+• Callee constructs result directly in that space
+
+
+Return Value Optimization
+Can RVO be used here?
+Widget g()
+{
+Widget a, b;
+...
+if (pred(some_value))
+return a;
+else
+return b;
+}
+
+
+Pass-By-Value Copy Elision
+Passing temporaries by value is another copy elision opportunity.
+Pass-by-value implies callee can change its copy of the argument without being observed
+by caller
+• Caller allocates space for callee's by-value parameters on stack.
+• Any lvalue arguments get copied into that space (no elision happens)
+• Any rvalue arguments are simply constructed in that space to begin with

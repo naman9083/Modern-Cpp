@@ -1,4 +1,7 @@
 #include <iostream>
+#include <algorithm>
+#include <numeric>
+#include <bits/stdc++.h>
 
 /*
     Threads
@@ -20,7 +23,7 @@
 
 #include <future>
 
-void factorial(std::future<int> &ft)
+void factorial(std::future<int> &ft,int a)
 {
     long long *ptr = (long long *)malloc(4); // line can be executed before int
     // wait for event
@@ -42,7 +45,8 @@ int main()
 
     std::promise<int> pr;
     std::future<int> ft = pr.get_future();
-    std::future<void> result = std::async(&factorial, std::ref(ft));
+    int a = 10;
+    std::future<void> result = std::async(&factorial, std::ref(ft), a);
 
     int value = 0;
     std::cin >> value;
@@ -50,5 +54,8 @@ int main()
     pr.set_value(value);
 
     result.wait();
+
+    
+    
     return 0;
 }

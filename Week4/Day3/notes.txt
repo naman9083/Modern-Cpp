@@ -1,0 +1,33 @@
+
+A situation where only one element needs to be accessed and it is the most recent item inserted in the container
+
+    e.g. : A compiler executing functions calls
+           f1()
+{
+    f2();
+}
+
+call stack :
+
+    f2 < -- -- -- -- -- -- -- -recently added,
+    top most entry.Will be accessed first !
+
+        f1 < -- -- -- -- -- -- -- -still pending
+
+                                  for (int i = 0; i < row; i++)
+{
+    for (int j = 0; j < cols; j++)
+    {
+        std::cout << i * j << "\n";
+    }
+}
+Linear Search
+
+Operation : Access iten and compare
+N : Size of elements to be checked
+
+TIme complexity : O(n)
+
+Time complexity is NOT MEASURED IN UNITS OF TIME !!!
+
+Time complexity is always concerned about "How many Operations" per input elements !

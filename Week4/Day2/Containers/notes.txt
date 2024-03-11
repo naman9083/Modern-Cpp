@@ -1,0 +1,75 @@
+
+
+Sequay: A smooth transition
+
+[101 | "Naman" | 87000.0f | "Developer"]
+[204 | "Ajit" | 90000.0f | "Designer"]
+[908 | "Vishal" | 80000.0f | "Tester"]
+
+Option 1: store objects in fixed sized container with contigous storage
+
+Benefits: 1) Random access
+          2) Easy to find next and previous
+          3) No tension of resize or change in length
+
+Answer: Array Data Structure
+CPP Implementation :: std::array<T,N,////>;
+
+Notes: 
+          1) When an array of size N when declared, Immediately reserves space for N items. This means N default constructions will happen at the time of declaration.
+          
+Option 2: store objects in a dynamically resizable container which can be used like a array with reservation for elements or by pushing when required and resizing the memory.
+    
+Answer: vector arrangement
+
+CPP Implementation: std::vector<T,////////>;
+
+Benefits: 1) You can resize the container during the runtime of the programmer.
+           2) You can access elements via index randomly!
+
+Notes: 
+        1) If you add elements beyond capacity, vector has to re adjust. Sometimes vector cannot expand adjacent to its boundary.
+        In such cases, a complete shift of data happens
+        
+
+
+
+
+Option 3: I would like to store data anywhere in RAM as long I can fetch it when I want it.
+          Data items should be "linked" to each other.
+
+Answer: LinkedList
+        CPP Implementation: std::forward_list : (singly linked list)
+                            std::list(doubly linked list)
+
+
+
+Option 4: 9 Items at MAX
+            Infinite data in future
+
+101:    [101 | "Naman" | 87000.0f | "Developer"]         = Row2 101%9=2 //row 2, result of Modulus 9 is HashValues/ hash
+102:    [204 | "Ajit" | 90000.0f | "Designer"  ]         = Row3 102%9=3 //row 3, result of Modulus 9 is HashValues/ hash        
+103:    [908 | "Vishal" | 80000.0f | "Tester"  ]         = Row4 103%9=4 //row 4, result of Modulus 9 is HashValues/ hash
+
+Formula [Hash Function ] Modulus 9
+
+Fix a mathematical of finding where to put the data [which row?] 
+We can use the same mathematical formula to determine
+Where my data is when U need to read it later
+
+
+
+[   ]    :    [                                ]     row[0] 
+[   ]    :    [                                ]     row[1]
+[101]    :    [101|"Naman"|87000.0f|"Developer"]     row[2]
+[102]    :    [ 102|"Ajit"|90000.0f|"Designer" ]     row[3]
+[   ]    :    [                                ]     row[4]
+[   ]    :    [                                ]     row[5]
+[   ]    :    [                                ]     row[6]
+[   ]    :    [                                ]     row[7]
+[   ]    :    [                                ]     row[8]
+
+time complexity : O(1)
+
+Average case : Amortized O(1)
+worst case: O(n)

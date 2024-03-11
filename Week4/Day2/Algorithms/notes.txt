@@ -1,0 +1,13 @@
+Algorithms Covered
+
+1) std::count_if : count instances matching condition
+2) std::find_if : find the position of the first instance that satisfies the condition.
+3) std::all_of: return true if all the instances match condition, false otherwise
+4) std::any_of: return true if one of the instance matches the condition, false otherwise.
+5) std::none_of: return true only none of the instances matches the condition, false otherwise.
+6) std::copy: copy all the elements from to destination uncoditionally
+7) std::copy_if: copy all the elements from sources to destination only when a elements satisfies the condition.
+8) std::max_element: find the position of the first max element [based on comparator].
+9) std::min_element: find the position of the first min element [based on comparator].
+10) std::accumulate: aggregate multiple elements into 1 by performing a progressive, binary operation of your choice.
+
