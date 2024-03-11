@@ -141,6 +141,8 @@ int main()
             std::cout << value<<"\n";
         },
         *minRange);
+
+
     // for (auto i : v)
     // {
     //     std::visit(
@@ -154,5 +156,27 @@ int main()
     std::cout << totalRange;
     std::cout<<'\n';
 
+
+    //applying STL algorithms on variant which has different member types
+    //Is it possible to apply STL algorithms on variant which has different member types?
+    //Yes, it is possible to apply STL algorithms on variant which has different member types
+    //The only thing to keep in mind is that the lambda function should be able to handle all the types that the variant can hold
+    //for example, in the above code, the lambda function in std::accumulate is able to handle both the types of the variant
+    float BatteryCapacity = std::accumulate(v.begin(), v.end(), 0.0f, [](float acc, const Vtype &v)
+                                       {
+                                           if (std::holds_alternative<EVCar>(v))
+                                           {
+                                               return acc + std::get<EVCar>(v).getBatteryCapacity();
+                                           }
+                                           else
+                                           {
+                                               return acc;
+                                           }
+
+                                       });
+
+    std::cout << BatteryCapacity;
+    //just like 
+                                    
     return 0;
 }

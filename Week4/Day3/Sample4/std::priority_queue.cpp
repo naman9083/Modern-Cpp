@@ -12,7 +12,6 @@ struct less_comparator
 };
 
 template <typename T, typename C>
-
 void display(std::priority_queue<T, std::vector<T>, C> pqData)
 {
     while (!pqData.empty())
