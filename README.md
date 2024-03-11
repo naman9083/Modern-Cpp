@@ -1342,5 +1342,342 @@ public:
 
 ```
 
-
+# Some STL Algorithms used most frequently
+## std::copy
+- It is used to copy the elements from one container to another container.
+- It is used to make the code more readable and maintainable.
+- It is used to avoid the explicit use of loops.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v1 = {10, 20, 30, 40, 50};
+    std::vector<int> v2(5);
+    std::copy(v1.begin(), v1.end(), v2.begin());
+    for(auto i : v2)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+## std::copy_if
+- It is used to copy the elements from one container to another container based on the condition.
+- It is used to make the code more readable and maintainable.
+- It is used to avoid the explicit use of loops.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v1 = {10, 20, 30, 40, 50};
+    std::vector<int> v2(5);
+    std::copy_if(v1.begin(), v1.end(), v2.begin(), [](int x)
+    {
+        return x > 30;
+    });
+    for(auto i : v2)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+## std::accumulate
+- It is used to accumulate the elements of the container.
+- We can use any operation to accumulate the elements.
+- Mostly all operations are binary operations.
+- By default, it uses the addition operation.
+- It includes 3-4 arguments, first is the starting point, second is the ending point, third is the initial value and fourth is the operation.
+- It is used to make the code more readable and maintainable.
+```cpp
+#include <iostream>
+#include <vector>
+#include <numeric>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    int result = std::accumulate(v.begin(), v.end(), 0, [](int x, int y)
+    {
+        return x + y;
+    });
+    std::cout << result << std::endl;
+    return 0;
+}
+```
+## std::transform
+- It is used to transform the elements of the container.
+- It can be used when we want to perform the operation on the elements of the container.
+- All the changes are made in the same container.
+- Also, we can use the different container for the output.
+- It is used to make the code more readable and maintainable.
+```cpp
+//same container
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::transform(v.begin(), v.end(), v.begin(), [](int x)
+    {
+        return x * 2;
+    });
+    for(auto i : v)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+```cpp
+//different container
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v1 = {10, 20, 30, 40, 50};
+    std::vector<int> v2(5);
+    std::transform(v1.begin(), v1.end(), v2.begin(), [](int x)
+    {
+        return x * 2;
+    });
+    for(auto i : v2)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+## std::all_of
+- It is used to check whether all the elements of the container satisfy the condition.
+- It returns true if all the elements satisfy the condition.
+- It returns false if any of the elements does not satisfy the condition.
+- We can use this algorithm to check the condition on all the elements of the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    if(std::all_of(v.begin(), v.end(), [](int x)
+    {
+        return x > 30;
+    }))
+    {
+        std::cout << "All elements are greater than 30" << std::endl;
+    }
+    else
+    {
+        std::cout << "All elements are not greater than 30" << std::endl;
+    }
+    return 0;
+}
+```
+## std::any_of
+- It is used to check whether any of the elements of the container satisfy the condition.
+- It returns true if any of the elements satisfy the condition.
+- It returns false if none of the elements satisfy the condition.
+- We can use this algorithm to check the condition on any of the elements of the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    if(std::any_of(v.begin(), v.end(), [](int x)
+    {
+        return x > 30;
+    }))
+    {
+        std::cout << "At least one element is greater than 30" << std::endl;
+    }
+    else
+    {
+        std::cout << "No element is greater than 30" << std::endl;
+    }
+    return 0;
+}
+```
+## std::none_of
+- It is used to check whether none of the elements of the container satisfy the condition.
+- It returns true if none of the elements satisfy the condition.
+- It returns false if any of the elements satisfy the condition.
+- We can use this algorithm to check the condition on none of the elements of the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    if(std::none_of(v.begin(), v.end(), [](int x)
+    {
+        return x > 30;
+    }))
+    {
+        std::cout << "No element is greater than 30" << std::endl;
+    }
+    else
+    {
+        std::cout << "At least one element is greater than 30" << std::endl;
+    }
+    return 0;
+}
+```
+## std::find
+- It is used to find the first occurrence of the element in the container.
+- It returns the iterator to the first occurrence of the element.
+- It returns the iterator to the end if the element is not found.
+- We can use this algorithm to find the first occurrence of the element in the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    auto it = std::find(v.begin(), v.end(), 30);
+    if(it != v.end())
+    {
+        std::cout << "Element found at position " << it - v.begin() << std::endl;
+    }
+    else
+    {
+        std::cout << "Element not found" << std::endl;
+    }
+    return 0;
+}
+```
+## std::find_if
+- It is used to find the first occurrence of the element in the container based on the condition.
+- It returns the iterator to the first occurrence of the element.
+- It returns the iterator to the end if the element is not found.
+- We can use this algorithm to find the first occurrence of the element in the container based on the condition.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    auto it = std::find_if(v.begin(), v.end(), [](int x)
+    {
+        return x > 30;
+    });
+    if(it != v.end())
+    {
+        std::cout << "Element found at position " << it - v.begin() << std::endl;
+    }
+    else
+    {
+        std::cout << "Element not found" << std::endl;
+    }
+    return 0;
+}
+```
+## std::distance
+- It is used to find the distance between two iterators.
+- It returns the distance between two iterators.
+- We can use this algorithm to find the distance between two iterators.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    auto it1 = v.begin();
+    auto it2 = v.end();
+    std::cout << std::distance(it1, it2) << std::endl;
+    return 0;
+}
+```
+## std::count
+- It is used to count the occurrences of the element in the container.
+- It returns the count of the occurrences of the element.
+- We can use this algorithm to count the occurrences of the element in the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::cout << std::count(v.begin(), v.end(), 30) << std::endl;
+    return 0;
+}
+```
+## std::count_if
+- It is used to count the occurrences of the element in the container based on the condition.
+- It returns the count of the occurrences of the element.
+- We can use this algorithm to count the occurrences of the element in the container based on the condition.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::cout << std::count_if(v.begin(), v.end(), [](int x)
+    {
+        return x > 30;
+    }) << std::endl;
+    return 0;
+}
+```
+## std::max_element
+- It is used to find the maximum element in the container.
+- It returns the iterator to the maximum element.
+- We can use this algorithm to find the maximum element in the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    auto it = std::max_element(v.begin(), v.end());
+    std::cout << *it << std::endl;
+    return 0;
+}
+```
+## std::min_element
+- It is used to find the minimum element in the container.
+- It returns the iterator to the minimum element.
+- We can use this algorithm to find the minimum element in the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    auto it = std::min_element(v.begin(), v.end());
+    std::cout << *it << std::endl;
+    return 0;
+}
+```
+## std::minmax_element
+- It is used to find the minimum and maximum element in the container.
+- It returns the pair of iterators to the minimum and maximum element.
+- We can use this algorithm to find the minimum and maximum element in the container.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    auto p = std::minmax_element(v.begin(), v.end());
+    std::cout << *p.first << " " << *p.second << std::endl;
+    return 0;
+}
+```
 

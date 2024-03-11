@@ -1,8 +1,8 @@
 
 A situation where only one element needs to be accessed and it is the most recent item inserted in the container
 
-    e.g. : A compiler executing functions calls
-           f1()
+e.g. : A compiler executing functions calls
+f1()
 {
     f2();
 }
@@ -31,3 +31,8 @@ TIme complexity : O(n)
 Time complexity is NOT MEASURED IN UNITS OF TIME !!!
 
 Time complexity is always concerned about "How many Operations" per input elements !
+
+Step1: Always find relation between N(number of input items) and operation where "operation" is context specific.
+
+e.g: In linear search, operation is "access element and compare"
+     In binary search, check middle, if found, okay, else divide
