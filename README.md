@@ -1681,3 +1681,86 @@ int main()
 }
 ```
 
+## std::sort
+- It is used to sort the elements of the container.
+- It internally uses the quicksort algorithm, but it is not guaranteed that it will use the quicksort algorithm.
+- Most frequently, it uses the introsort algorithm.
+- It is used to make the code more readable and maintainable.
+- It is used to avoid the explicit use of loops.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {50, 40, 30, 20, 10};
+    std::sort(v.begin(), v.end());
+    for(auto i : v)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+## std::reverse
+- It is used to reverse the elements of the container.
+- It is used to make the code more readable and maintainable.
+- It is used to avoid the explicit use of loops.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::reverse(v.begin(), v.end());
+    for(auto i : v)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+## std::rotate
+- It is used to rotate the elements of the container.
+- It is used to make the code more readable and maintainable.
+- It is used to avoid the explicit use of loops.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 30, 40, 50};
+    std::rotate(v.begin(), v.begin() + 2, v.end());
+    for(auto i : v)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+## std::unique
+- It is used to remove the duplicate elements of the container.
+- It returns the iterator to the end of the unique elements.
+- After that iterator, all the elements can be removed by the erase method.
+- It is used to make the code more readable and maintainable.
+- It is used to avoid the explicit use of loops.
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+int main()
+{
+    std::vector<int> v = {10, 20, 20, 30, 30, 40, 50};
+    std::sort(v.begin(), v.end());
+    auto it = std::unique(v.begin(), v.end());
+    v.erase(it, v.end());
+    for(auto i : v)
+    {
+        std::cout << i << std::endl;
+    }
+    return 0;
+}
+```
+
