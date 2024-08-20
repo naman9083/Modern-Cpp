@@ -95,12 +95,16 @@ using Vcon = std::vector<Vtype>;
 int main()
 {
     Vcon v;
+
     v.push_back(EVCar(20.0f, 50, "Volkswagen"));
     v.push_back(DieselCar(30.0f, 40, "Toyota"));
     v.push_back(EVCar(30.0f, 30, "Tesla"));
     v.push_back(DieselCar(40.0f, 20, "Hyundai"));
     v.push_back(EVCar(40.0f, 60, "Tata"));
     v.push_back(DieselCar(50.0f, 50, "Honda"));
+
+
+
 
     float totalRange = std::accumulate(v.begin(), v.end(), 0.0f, [](float acc, const Vtype &v)
                                        {
@@ -112,19 +116,13 @@ int main()
                                                             v);
                                        });
 
-    auto maxRange = std::max_element(v.begin(),v.end(),[](const Vtype &v1,const Vtype&v2){
-        return std::visit(
-                                                        [](auto &&value)
-                                                            {
-                                                                return value.getRange();
-                                                            },
-                                                            v1)<
-        std::visit(
-                                                            [](auto &&value)
-                                                            {
-                                                                return value.getRange();
-                                                            },
-                                                            v2);});
+
+    // auto maxRange = std::max_element(v.begin(),v.end(),[](const Vtype &v1,const Vtype&v2){
+    //     return std::visit([](auto &&value){
+    //                                      return value.getRange();},v1)<std::visit([](auto &&value){
+    //                                                             return value.getRange();
+    //                                                         },
+    //                                                         v2);});
 
     auto minRange = std::min_element(v.begin(), v.end(), [](const Vtype &v1, const Vtype &v2)
                                      { return std::visit(

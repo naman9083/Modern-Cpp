@@ -28,7 +28,7 @@ void squareOfNumber(int a)
 }
 void cubeOfNumber(int a)
 {
-    std::cout << "Square of: " << a << " is: " << a * a * a << "\n";
+    std::cout << "Cube of: " << a << " is: " << a * a * a << "\n";
 }
 // calculate is a higher order function
 // a higher order function either

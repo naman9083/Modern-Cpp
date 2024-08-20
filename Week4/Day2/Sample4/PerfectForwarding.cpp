@@ -11,6 +11,11 @@ template<typename T,typename... Args>
 T relay(Args&&...n1){
     return T(std::forward<Args>(n1)...);
 }
+template <typename T, typename... Args>
+T relay1(Args... a)
+{
+    return T(std::forward<Args>(a)...);
+}
 
 void Magic(int &&n1){
     //10 gets assigned to n1. now n1 is lvalue!

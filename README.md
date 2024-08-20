@@ -194,6 +194,51 @@ int main()
 }
 ```
 
+# Encapsulation in C++
+
+- Encapsulation is a way to restrict the access to the class members.
+- It is used to hide the internal details of the class.
+- It is used to protect the data from the outside world.
+- It is used to provide the security to the data.
+- It is used to provide the data hiding.
+- It is used to provide the data abstraction.
+
+```cpp
+#include <iostream>
+class A
+{
+    int x;
+    int y;
+
+public:
+    void setX(int x)
+    {
+        this->x = x;
+    }
+    void setY(int y)
+    {
+        this->y = y;
+    }
+    int getX()
+    {
+        return x;
+    }
+    int getY()
+    {
+        return y;
+    }
+};
+int main()
+{
+    A a;
+    a.setX(10);
+    a.setY(20);
+    std::cout << a.getX() << std::endl;
+    std::cout << a.getY() << std::endl;
+    return 0;
+}
+```
+
 # Composition in C++
 
 - In C++, composition is a way to combine objects of different classes.
@@ -1169,6 +1214,7 @@ int main()
 ```
 
 # Copy Elision in C++
+
 - In C++, copy elision is a compiler optimization technique.
 - The compiler optimizes the code by avoiding the creation of the temporary objects.
 - It is also called return value optimization.
@@ -1200,7 +1246,6 @@ int main()
     return 0;
 }
 ```
-
 
 # Fold Expressions in C++
 
@@ -2006,9 +2051,11 @@ int main()
 ```
 
 # std::forward and std::move in C++
+
 - In C++, the `std::forward` and `std::move` functions are used to forward the arguments and move the objects.
 - The `std::forward` function is used to forward the arguments to the other function, as it was received.
 - The `std::move` function is used to move the objects to the other function call stack.
+
 ```cpp
 #include <iostream>
 #include <utility>
@@ -2023,6 +2070,7 @@ int main()
     return 0;
 }
 ```
+
 ```cpp
 #include <iostream>
 #include <utility>

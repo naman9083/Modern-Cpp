@@ -33,11 +33,7 @@ EngineP EnginePointerToMinPriceCar(const Container &data)
     {
         EmptyContainerException("Data is empty\n", std::future_errc::no_state);
     }
-    auto itr = std::min_element(data.begin(), data.end(),
-                                [](const std::pair<std::string, CarP> &entry1, const std::pair<std::string, CarP> &entry2)
-                                {
-                                    return entry1.second->price() < entry2.second->price();
-                                });
+    auto itr = std::min_element(data.begin(), data.end(),[](const std::pair<std::string, CarP> &entry1, const std::pair<std::string, CarP> &entry2){return entry1.second->price() < entry2.second->price();});
     return itr->second->getEngine();
 }
 

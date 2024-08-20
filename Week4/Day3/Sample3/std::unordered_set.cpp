@@ -4,9 +4,10 @@
 int main()
 {
 
-    std::unordered_set<int> s1{12, 12, 11, 13, 11, 13, 11, 14};
+    // std::unordered_set<int> s1{12, 12, 11, 13, 11, 13, 11, 14};
 
-    s1.insert(11).second ? std::cout << "Element added\n" : std::cout << "Not added\n";
+    // s1.insert(11).second ? std::cout << "Element added\n" : std::cout << "Not added\n";
+
 
     auto EmployeeHash = [](const EmployeeSmart &emp) {
         return std::hash<std::string>()(emp->getName()) ^ std::hash<float>()(emp->getSalary()) ^ std::hash<std::string>()(emp->getDesignation()) ^ std::hash<int>()(emp->getExpYear());
@@ -16,6 +17,7 @@ int main()
     };
 
     std::unordered_set<EmployeeSmart, decltype(EmployeeHash), decltype(EmployeeEqual)> empSet(10, EmployeeHash, EmployeeEqual);
+    
     //10 indicates the initial bucket count
     //EmployeeHash is the hash function
     //EmployeeEqual is the equality function
