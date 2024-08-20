@@ -1065,6 +1065,30 @@ int main()
 - It is used to check whether the object is alive or not.
 - It is used to convert the weak reference to the strong reference.
 
+
+# Arithmetic Pointers in C++
+
+- In C++, arithmetic pointers are used to perform the arithmetic operations on the pointers.
+- They are used to perform the addition and subtraction operations on the pointers.
+- They are used to perform the increment and decrement operations on the pointers.
+- They are used to perform the comparison operations on the pointers.
+
+```cpp
+#include <iostream>
+int main()
+{
+    int x = 10;
+    int* p = &x;
+    std::cout << p << std::endl;
+    p++;
+    std::cout << p << std::endl;
+    p--;
+    std::cout << p << std::endl;
+    return 0;
+}
+```
+
+
 # Reference Wrappers in C++
 
 - In C++, reference wrappers are used to wrap the references.
