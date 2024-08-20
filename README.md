@@ -993,6 +993,24 @@ int main()
 }
 ```
 
+# Raw Pointers
+
+- In C++, raw pointers are used to manage the memory.
+- They are used to allocate and deallocate the memory.
+- They are used to access the memory directly.
+- They are used to access the memory address.
+
+```cpp
+#include <iostream>
+int main()
+{
+    int* p = new int(10); // Raw Pointer
+    std::cout << *p << std::endl;
+    delete p;
+    return 0;
+}
+```
+
 # Smart Pointers in C++
 
 - In C++, smart pointers are used to manage the memory.
